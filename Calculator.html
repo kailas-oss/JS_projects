@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+</head>
+<style>
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #afc9db;
+    font-family: Arial, sans-serif;
+    border: 1px solid black;
+    margin: 0;
+}
+.container{
+    border-radius: 7px;
+    background-color: rgb(46, 38, 38);
+}
+.display{
+    margin-bottom: 10px;
+}
+
+
+.display input{
+    color: white;
+    border-radius: 3px;
+    height: 40px;
+    font-size: 1.5rem;
+    text-align: right;
+    background-color: rgb(234, 228, 228);
+    border: none;
+}
+.btns{
+    width: 100%;
+    margin-top: 3px;
+}
+.button{
+    border-radius: 45%;
+    color: white;
+    cursor: pointer;
+    font-size: large;
+    font-weight: 300;
+    font-size: 1.5rem;
+    background-color: rgb(101, 99, 99);
+    margin-left: 25px;
+    margin-bottom: 4px;
+    height: 40px;
+    width: 40px;
+}
+.buttonRight{
+    border-radius: 50%;
+    color: rgb(255, 253, 253);
+    cursor: pointer;
+    font-size: large;
+    font-weight: 300;
+    font-size: 1.5rem;
+    background-color: rgb(255, 5, 5);
+    margin-left: 25px;
+    margin-bottom: 4px;
+    height: 40px;
+    width: 40px;
+}
+.buttonTop{
+    border-radius: 45%;
+    color: white;
+    cursor: pointer;
+    font-size: large;
+    font-weight: 300;
+    font-size: 1.5rem;
+    background-color: rgb(158, 156, 156);
+    margin-left: 25px;
+    margin-bottom: 4px;
+    height: 40px;
+    width: 40px;
+}
+.buttonZero{
+    border-radius: 41%;
+    color: white;
+    cursor: pointer;
+    font-size: large;
+    font-weight: 300;
+    font-size: 1.5rem;
+    background-color: rgb(101, 99, 99);
+    margin-left: 25px;
+    margin-bottom: 4px;
+    height: 40px;
+    width: 110px;
+}
+</style>
+<body>
+    
+    <div class="container">
+        <div class="display">
+            <input type="text" id="contentDisplay">
+        </div>
+        <div class="btns">
+            <button class = "buttonTop" onclick="clearDisplay()">C</button>
+            <button class = "buttonTop" onclick="appendVal()">(</button>
+            <button class = "buttonTop"  onclick="appendVal()">)</button>
+            <button class = "buttonRight"  onclick="appendVal('+')">+</button>
+            <br>
+            <button class = "button"  onclick="appendVal('7')">7</button>
+            <button class = "button"  onclick="appendVal('8')">8</button>
+            <button class = "button"  onclick="appendVal('9')">9</button>
+            <button class = "buttonRight"  onclick="appendVal('-')">-</button>
+            <br>
+            <button class = "button"  onclick="appendVal('4')">4</button>
+            <button class = "button"  onclick="appendVal('5')">5</button>
+            <button class = "button"  onclick="appendVal('6')">6</button>
+            <button class = "buttonRight"  onclick="appendVal('*')">*</button>
+            <br>
+            <button class = "button"  onclick="appendVal('1')">1</button>
+            <button class = "button"  onclick="appendVal('2')">2</button>
+            <button class = "button"  onclick="appendVal('3')">3</button>
+            <button class = "buttonRight"  onclick="appendVal('/')">/</button>
+            <br>
+            <button class = "buttonZero"  onclick="appendVal('0')">0</button>
+            <button class = "button"  onclick="appendVal('%')">%</button>
+            <button class = "buttonRight"  onclick="calVal()"> = </button>
+          
+        </div>
+    </div>
+    
+</body>
+<script>
+    function calVal(){
+        try{
+            const ans = eval(document.getElementById("contentDisplay").value);
+            console.log(ans);
+            document.getElementById("contentDisplay").value = ans;
+        }catch{
+            alert("Invlaid expression")
+        }
+    }
+
+    function clearDisplay(){
+        //var txt = "";
+        document.getElementById("contentDisplay").value = "";
+
+    }
+    function appendVal(val){
+        var txt = document.getElementById("contentDisplay").value;
+        document.getElementById("contentDisplay").value = txt += val;
+        //console.log(txt);
+    }
+</script>
+</html>
