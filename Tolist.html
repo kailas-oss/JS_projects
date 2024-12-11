@@ -1,11 +1,50 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Todo list</title>
 </head>
 <body>
-    
+    <div class="container">
+        <div class="heading">
+            <h1>ToDo List</h1>
+        </div>
+        <div class="addTask">
+            <input id="btn" type="text" placeholder="Add your task">
+            <button onclick="appendValue()" class="btnSing">+</button>
+            <button onclick="display()" class="btnSing">+</button>
+        </div>
+        <div class="taskList">
+            <ul id="taskContainer"></ul>
+        </div>
+    </div>
 </body>
+<script>
+    var tasks = [];
+    function appendValue(){
+        var curr = document.getElementById("btn").value.trim();
+        document.getElementById("btn").value = "";
+        tasks.push({task:curr});
+        renderValues();
+    }
+    function renderValues(){
+        var taskContainer = document.getElementById(taskContainer);
+        taskContainer.innerHTML = "";
+        tasks.forEach((tasksObj,index)=>{
+            var li = document.createElement("li");
+            li.textContent = tasksObj.task;
+            taskContainer.appendChild(li);
+        })
+
+    }
+
+    function display(){
+        tasks.forEach(element => {
+            console.log(element);
+            
+        });
+    }
+</script>
 </html>
